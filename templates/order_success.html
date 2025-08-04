@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}Order Successful - Local Store{%
+endblock %} {% block content %}
+<div class="text-center">
+  <i class="fas fa-check-circle fa-5x text-success mb-4"></i>
+  <h1>Order Placed Successfully!</h1>
+  <p class="lead">Thank you for your order, {{ order.customer_name }}!</p>
+
+  <div class="card mx-auto" style="max-width: 500px">
+    <div class="card-body">
+      <h5>Order Details</h5>
+      <p><strong>Order ID:</strong> #{{ order.id }}</p>
+      <p>
+        <strong>Total Amount:</strong> ${{ "%.2f"|format(order.total_amount) }}
+      </p>
+      <p>
+        <strong>Status:</strong>
+        <span class="badge bg-warning">{{ order.status.title() }}</span>
+      </p>
+      <p>
+        <strong>Order Date:</strong> {{ order.created_at.strftime('%B %d, %Y at
+        %I:%M %p') }}
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <a href="{{ url_for('index') }}" class="btn btn-primary"
+      >Continue Shopping</a
+    >
+  </div>
+</div>
+{% endblock %}
